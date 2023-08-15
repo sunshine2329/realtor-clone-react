@@ -28,13 +28,13 @@ module.exports = {
     'no-use-before-define': 'off',
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
-    'max-len': [
-      'error',
-      {
-        code: 100,
-        tabWidth: 2
-      }
-    ],
+    // 'max-len': [
+    //   'error',
+    //   {
+    //     code: 100,
+    //     tabWidth: 2
+    //   }
+    // ],
     'no-param-reassign': 'off',
     'no-underscore-dangle': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }],
