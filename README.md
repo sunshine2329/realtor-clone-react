@@ -2,8 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Live: https://workray.github.io/realtor-clone-react/
-
 ## Available Scripts
 
 In the project directory, you can run:
