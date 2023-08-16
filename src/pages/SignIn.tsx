@@ -2,19 +2,33 @@ import { useState } from 'react'
 import { Input, PasswordInput } from '../components/inputs'
 import { AuthSection } from '../components/auth'
 import { Button } from '../components/buttons'
+import { toast } from 'react-toastify'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { useNavigate } from 'react-router'
 
 type FormData = {
   email: string
   password: string
 }
 export default function SignIn() {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState<FormData>({ email: '', password: '' })
   const { email, password } = formData
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prevState => ({ ...prevState, [e.target.id]: e.target.value }))
   }
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    try {
+      const auth = getAuth()
+      const userCredentials = await signInWithEmailAndPassword(auth, email, password)
+      if (userCredentials.user) {
+        navigate('/')
+      }
+    } catch (error) {
+      toast.error('Bad user credentials.')
+      console.log(error)
+    }
   }
   const signInForm = () => (
     <>
