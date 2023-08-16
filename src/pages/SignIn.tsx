@@ -4,7 +4,7 @@ import { AuthSection } from '../components/auth'
 import { Button } from '../components/buttons'
 import { toast } from 'react-toastify'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 
 type FormData = {
   email: string
@@ -55,8 +55,10 @@ export default function SignIn() {
   return (
     <AuthSection
       title="Sign In"
-      changeInfo={{ description: "Don't you have an account?", title: 'Register', to: '/sign-up' }}
-      insteadInfo={{ to: '/forgot-password', title: 'Forgot password?' }}
+      askProps={{
+        ask: { description: "Don't you have an account?", actionName: 'Register', to: '/sign-up' },
+        other: { to: '/forgot-password', actionName: 'Forgot password?' }
+      }}
       form={signInForm()}
       actionButton={signInButton()}
       onSubmit={handleSubmit}

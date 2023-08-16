@@ -1,16 +1,15 @@
-import { Link } from 'react-router-dom'
 import { OAuth } from '../buttons'
+import AskAction, { AskActionProps } from '../AskAction'
 
 type AuthSectionProps = {
   title: string
-  changeInfo: { to: string; title: string; description: string }
-  insteadInfo: { to: string; title: string }
+  askProps: AskActionProps
   form: React.ReactNode
   actionButton: React.ReactNode
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }
 const AuthSection: React.FC<AuthSectionProps> = (props: AuthSectionProps) => {
-  const { title, changeInfo, insteadInfo, form, actionButton, onSubmit } = props
+  const { title, askProps, form, actionButton, onSubmit } = props
   return (
     <section>
       <h1 className="text-3xl text-center mt-6 font-bold">{title}</h1>
@@ -25,25 +24,7 @@ const AuthSection: React.FC<AuthSectionProps> = (props: AuthSectionProps) => {
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
           <form onSubmit={onSubmit}>
             {form}
-            <div className="flex justify-between whitespace-nowrap text-sm sm:text-base">
-              <p className="mb-6">
-                {changeInfo.description}
-                <Link
-                  to={changeInfo.to}
-                  className="text-red-600 hover:text-red-700 transition duration-200 ease-in-out ml-1"
-                >
-                  {changeInfo.title}
-                </Link>
-              </p>
-              <p>
-                <Link
-                  to={insteadInfo.to}
-                  className="text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out"
-                >
-                  {insteadInfo.title}
-                </Link>
-              </p>
-            </div>
+            <AskAction {...askProps} />
             {actionButton}
             <div className="flex my-4 items-center before:border-t before:flex-1 before:border-gray-300 after:border-t after:flex-1 after:border-gray-300">
               <p className="text-center font-semibold mx-4">OR</p>

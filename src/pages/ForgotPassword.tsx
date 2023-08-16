@@ -35,8 +35,10 @@ export default function ForgotPassword() {
   return (
     <AuthSection
       title="Forgot Password"
-      changeInfo={{ description: "Don't you have an account?", title: 'Register', to: '/sign-up' }}
-      insteadInfo={{ to: '/sign-in', title: 'Sign in instead' }}
+      askProps={{
+        ask: { description: "Don't you have an account?", actionName: 'Register', to: '/sign-up' },
+        other: { to: '/sign-in', actionName: 'Sign in instead' }
+      }}
       form={forgotPasswordForm()}
       actionButton={forgotPasswordButton()}
       onSubmit={handleSubmit}

@@ -5,7 +5,7 @@ import { Button } from '../components/buttons'
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { db } from '../firebase'
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 type FormData = {
@@ -77,8 +77,10 @@ export default function SignUp() {
   return (
     <AuthSection
       title="Sign Up"
-      changeInfo={{ description: 'have an account?', title: 'Sign in', to: '/sign-in' }}
-      insteadInfo={{ to: '/forgot-password', title: 'Forgot password?' }}
+      askProps={{
+        ask: { description: 'have an account?', actionName: 'Sign in', to: '/sign-in' },
+        other: { to: '/forgot-password', actionName: 'Forgot password?' }
+      }}
       form={signUpForm()}
       actionButton={signUpButton()}
       onSubmit={handleSubmit}
