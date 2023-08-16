@@ -8,6 +8,9 @@ export default function ForgotPassword() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
   }
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  }
   const forgotPasswordForm = () => (
     <Input
       type="email"
@@ -26,6 +29,7 @@ export default function ForgotPassword() {
       insteadInfo={{ to: '/sign-in', title: 'Sign in instead' }}
       form={forgotPasswordForm()}
       actionButton={forgotPasswordButton()}
+      onSubmit={handleSubmit}
     />
   )
 }

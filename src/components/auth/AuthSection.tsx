@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Button, OAuth } from '../buttons'
+import { OAuth } from '../buttons'
 
 type AuthSectionProps = {
   title: string
@@ -7,9 +7,10 @@ type AuthSectionProps = {
   insteadInfo: { to: string; title: string }
   form: React.ReactNode
   actionButton: React.ReactNode
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }
 const AuthSection: React.FC<AuthSectionProps> = (props: AuthSectionProps) => {
-  const { title, changeInfo, insteadInfo, form, actionButton } = props
+  const { title, changeInfo, insteadInfo, form, actionButton, onSubmit } = props
   return (
     <section>
       <h1 className="text-3xl text-center mt-6 font-bold">{title}</h1>
@@ -22,9 +23,9 @@ const AuthSection: React.FC<AuthSectionProps> = (props: AuthSectionProps) => {
           />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
-          <form>
+          <form onSubmit={onSubmit}>
             {form}
-            <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg">
+            <div className="flex justify-between whitespace-nowrap text-sm sm:text-base">
               <p className="mb-6">
                 {changeInfo.description}
                 <Link

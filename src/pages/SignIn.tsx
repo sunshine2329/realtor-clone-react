@@ -13,6 +13,9 @@ export default function SignIn() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prevState => ({ ...prevState, [e.target.id]: e.target.value }))
   }
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  }
   const signInForm = () => (
     <>
       <Input
@@ -42,6 +45,7 @@ export default function SignIn() {
       insteadInfo={{ to: '/forgot-password', title: 'Forgot password?' }}
       form={signInForm()}
       actionButton={signInButton()}
+      onSubmit={handleSubmit}
     />
   )
 }
