@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-color: #f1faee;
+  box-sizing: border-box;
+  margin: 0;
+}

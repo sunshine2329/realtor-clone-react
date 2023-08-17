@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { Input } from '../components/inputs'
 import { getAuth, updateProfile } from 'firebase/auth'
 import AskAction from '../components/AskAction'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '../components/buttons'
 import { toast } from 'react-toastify'
 import { doc, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase'
+import { FcHome } from 'react-icons/fc'
 
 type FormData = {
   name: string
@@ -84,8 +85,10 @@ export default function Profile() {
             />
             {changeDetail ? (
               <div className="flex space-x-2">
-                <Button title="Apply Change" type="submit" />
-                <Button title="Cancel" onClick={handleCancelChange} color="default" />
+                <Button type="submit">Apply Change</Button>
+                <Button onClick={handleCancelChange} color="default">
+                  Cancel
+                </Button>
               </div>
             ) : (
               <AskAction
@@ -98,6 +101,14 @@ export default function Profile() {
               />
             )}
           </form>
+          <Link to="/create-listing">
+            <Button
+              type="submit"
+              icon={<FcHome className="mr-2 text-3xl bg-red-200 rounded-full p-1 border-2" />}
+            >
+              Sell or rent your home
+            </Button>
+          </Link>
         </div>
       </section>
     </>

@@ -73,7 +73,7 @@ export default function SignUp() {
       />
     </>
   )
-  const signUpButton = () => <Button type="submit" title="Sign up" />
+  const signUpButton = () => <Button type="submit">Sign up</Button>
   return (
     <AuthSection
       title="Sign Up"

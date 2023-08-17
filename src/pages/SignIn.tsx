@@ -51,7 +51,7 @@ export default function SignIn() {
       />
     </>
   )
-  const signInButton = () => <Button type="submit" title="Sign in" />
+  const signInButton = () => <Button type="submit">Sign in</Button>
   return (
     <AuthSection
       title="Sign In"
